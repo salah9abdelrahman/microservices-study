@@ -1,0 +1,93 @@
+version: '3'
+
+services:
+  api-gateway:
+    image: "api-gateway"
+    container_name: api-gateway
+    build:
+      dockerfile: api-gateway/Dockerfile
+      context: .
+    ports:
+      - "8765:8765"
+    depends_on:
+      - registery-server
+      - zipkin-server
+      - config-server
+    environment:
+    - SPRING.CONFIG.URI=http://config-server:8888
+    - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+    - spring.zipkin.baseurl=http://zipkin-server:9411
+
+
+  service-another-micro-dude:
+    image: "service-another-micro-dude"
+    container_name: service-another-micro-dude
+    build:
+      dockerfile: another-micro-dude/Dockerfile
+      context: .
+    ports:
+      - "8100:8100"
+    depends_on:
+      - registery-server
+      - config-server
+      - zipkin-server
+    environment:
+      - SPRING.CONFIG.URI=http://config-server:8888
+      - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+      - spring.zipkin.baseurl=http://zipkin-server:9411
+
+  service-micro-dude-kman:
+    image: "service-micro-dude-kman"
+    container_name: service-micro-dude-kman
+    build:
+      dockerfile: microdudekman/Dockerfile
+      context: .
+    ports:
+      - "8200:8200"
+    depends_on:
+      - registery-server
+      - config-server
+      - zipkin-server
+    environment:
+      - SPRING.CONFIG.URI=http://config-server:8888
+      - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+      - spring.zipkin.baseurl=http://zipkin-server:9411
+
+  config-server:
+    image: "config-server"
+    container_name: config-server
+    build:
+      dockerfile: config-server/Dockerfile
+      context: .
+    ports:
+      - "8888:8888"
+    environment:
+      - spring.zipkin.baseurl=http://zipkin-server:9411
+    depends_on:
+      - zipkin-server
+
+  registery-server:
+    image: "registery-server"
+    container_name: registery-server
+    build:
+      dockerfile: registery-server/Dockerfile
+      context: .
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-server
+      - zipkin-server
+    environment:
+      - SPRING.CONFIG.URI=http://config-server:8888
+      - spring.zipkin.baseurl=http://zipkin-server:9411
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    container_name: zipkin-server
+    ports:
+      - "9411:9411"
+#    environment:
+#      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+#    depends_on:
+#      - rabbitmq
+    restart: always #Restart if there is a problem starting up

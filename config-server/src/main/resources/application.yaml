@@ -3,12 +3,15 @@ spring:
     config:
       server:
         git:
-          uri: file://Users/salahabdelrahman/Desktop/projects/self/config-server-test
+          uri: https://github.com/salah9abdelrahman/config-server-test
 
 
   application:
     name: config-server
-
+#
+#  sleuth:
+#    sampler:
+#      probability: 1.0
 
 server:
   port: 8888

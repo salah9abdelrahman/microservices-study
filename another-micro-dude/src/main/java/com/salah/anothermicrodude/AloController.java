@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 public class AloController {
 //    @Retry(name = "alo", fallbackMethod = "defaultValue")
 //    @CircuitBreaker(name = "default", fallbackMethod = "defaultValue")
-    @RateLimiter(name = "default")
+//    @RateLimiter(name = "default")
     @GetMapping
     public Ent alo() {
         log.info("aloooo");
