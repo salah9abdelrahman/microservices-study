@@ -35,6 +35,3 @@ resilience4j:
         waitDuration: 2s
         enableRandomizedWait: true
         randomizedWaitFactor: 0.5
-#eureka:
-#  client:
-#    service-url:
