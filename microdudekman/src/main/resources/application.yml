@@ -1,14 +1,9 @@
+#  sleuth:
+#    sampler:
+#      probability: 1.0
 spring:
   application:
     name: service-micro-dude-kman
-  cloud:
-    config:
-      fail-fast: true
-      uri: http://localhost:8888
-  sleuth:
-    sampler:
-      probability: 1.0
-
 management:
   endpoints:
     web:

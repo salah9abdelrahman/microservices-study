@@ -4,8 +4,8 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
-  server:
-    enable-self-preservation: false
+#  server:
+#    enable-self-preservation: false
 
 server:
   port: 8761
@@ -15,11 +15,6 @@ server:
 #  spring.cloud.config.retry.max-interval=10000
 #  spring.cloud.config.retry.max-attempts=2000
 
-spring:
-  cloud:
-    config:
-      fail-fast: true
-      uri: http://localhost:8888
 
 #  sleuth:
 #    sampler:

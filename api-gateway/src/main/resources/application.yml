@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: api-gateway
+  gateway:
+    discovery:
+      locator:
+        enabled: true
+        lower-case-service-id: true
+#  sleuth:
+#    sampler:
+#      probability: 1.0
+
+server:
+  port: 8765
+
+
+
+# http://localhost:8765/service-another-micro-dude/service1/feign-bla
+# http://localhost:8765/service-micro-dude-kman/consume-me
+# http://localhost:8765/get
+
