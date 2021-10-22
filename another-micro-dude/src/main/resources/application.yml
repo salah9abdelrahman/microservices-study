@@ -4,9 +4,17 @@
 #      # percentage to traced requests
 #      # why? cuz we can't trace all cuz performance impact
 #      probability: 1.0
+jasypt:
+  encryptor:
+    password: salah
+
 spring:
   application:
     name: service-another-micro-dude
+  security:
+    user:
+      name: ENC(BMbogUP5kc6RgxlxT0VEKw==)
+      password: ENC(cReFZN0oof73FRdQbqcH8w==)
 
 server:
   port: 8100
@@ -32,3 +40,5 @@ resilience4j:
         waitDuration: 2s
         enableRandomizedWait: true
         randomizedWaitFactor: 0.5
+
+eureka.client.serviceUrl.defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
