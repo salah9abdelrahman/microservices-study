@@ -6,6 +6,10 @@ spring:
       locator:
         enabled: true
         lower-case-service-id: true
+  security:
+    user:
+      name: ENC(BMbogUP5kc6RgxlxT0VEKw==)
+      password: ENC(cReFZN0oof73FRdQbqcH8w==)
 #  sleuth:
 #    sampler:
 #      probability: 1.0
@@ -14,8 +18,12 @@ server:
   port: 8765
 
 
-
 # http://localhost:8765/service-another-micro-dude/service1/feign-bla
 # http://localhost:8765/service-micro-dude-kman/consume-me
 # http://localhost:8765/get
-
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka

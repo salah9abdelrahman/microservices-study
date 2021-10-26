@@ -2,12 +2,11 @@ eureka:
   instance:
     hostname: localhost
   client:
-    service-url:
-      defaultZone: http://salah:bla@localhost:${server.port}/eureka
+      # tells the Eureka service that as it starts, it doesn’t need to cache its registry information locally.
     fetch-registry: false
     register-with-eureka: false
-#  server:
-#    enable-self-preservation: false
+
+
 
 server:
   port: 8761
@@ -26,12 +25,10 @@ management:
   endpoints:
     web:
       exposure:
-        include=*:
+        include: "*"
 
 spring:
   security:
     user:
-      name: salah
-      password: bla
-
-
+      name: ENC(TGY5EMOdA+aWJwU7W1zNJw==)
+      password: ENC(EKN4QkZiEoFUG/zt4kuxPA==)

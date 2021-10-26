@@ -15,8 +15,9 @@ services:
       - config-server
     environment:
     - SPRING.CONFIG.URI=http://config-server:8888
-    - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+    - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
     - spring.zipkin.baseurl=http://zipkin-server:9411
+    - jasypt.encryptor.password=salah
 
 
   service-another-micro-dude:
@@ -33,9 +34,9 @@ services:
       - zipkin-server
     environment:
       - SPRING.CONFIG.URI=http://config-server:8888
-      - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
       - spring.zipkin.baseurl=http://zipkin-server:9411
-
+      - jasypt.encryptor.password=salah
   service-micro-dude-kman:
     image: "service-micro-dude-kman"
     container_name: service-micro-dude-kman
@@ -50,9 +51,9 @@ services:
       - zipkin-server
     environment:
       - SPRING.CONFIG.URI=http://config-server:8888
-      - eureka.client.serviceUrl.defaultZone=http://registery-server:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
       - spring.zipkin.baseurl=http://zipkin-server:9411
-
+      - jasypt.encryptor.password=salah
   config-server:
     image: "config-server"
     container_name: config-server
@@ -80,6 +81,7 @@ services:
     environment:
       - SPRING.CONFIG.URI=http://config-server:8888
       - spring.zipkin.baseurl=http://zipkin-server:9411
+      - jasypt.encryptor.password=hola
 
   zipkin-server:
     image: openzipkin/zipkin:2.23
