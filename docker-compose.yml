@@ -14,12 +14,8 @@ services:
       - zipkin-server
       - config-server
     environment:
-    - SPRING.CONFIG.URI=http://config-server:8888
-    - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
-    - spring.zipkin.baseurl=http://zipkin-server:9411
-    - jasypt.encryptor.password=salah
-
-
+      - SPRING.CONFIG.URI=http://config-server:8888
+      - spring.zipkin.baseurl=http://zipkin-server:9411
   service-another-micro-dude:
     image: "service-another-micro-dude"
     container_name: service-another-micro-dude
@@ -34,9 +30,7 @@ services:
       - zipkin-server
     environment:
       - SPRING.CONFIG.URI=http://config-server:8888
-      - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
       - spring.zipkin.baseurl=http://zipkin-server:9411
-      - jasypt.encryptor.password=salah
   service-micro-dude-kman:
     image: "service-micro-dude-kman"
     container_name: service-micro-dude-kman
@@ -51,9 +45,7 @@ services:
       - zipkin-server
     environment:
       - SPRING.CONFIG.URI=http://config-server:8888
-      - eureka.client.serviceUrl.defaultZone=http://salah:bla@registery-server:8761/eureka/
       - spring.zipkin.baseurl=http://zipkin-server:9411
-      - jasypt.encryptor.password=salah
   config-server:
     image: "config-server"
     container_name: config-server
@@ -64,6 +56,8 @@ services:
       - "8888:8888"
     environment:
       - spring.zipkin.baseurl=http://zipkin-server:9411
+      - jasypt.encryptor.password=salah
+      - eureka.instance.hostname=registery-server
     depends_on:
       - zipkin-server
 
@@ -88,8 +82,8 @@ services:
     container_name: zipkin-server
     ports:
       - "9411:9411"
-#    environment:
-#      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
-#    depends_on:
-#      - rabbitmq
+    #    environment:
+    #      RABBIT_URI: amqp://guest:guest@rabbitmq:5672
+    #    depends_on:
+    #      - rabbitmq
     restart: always #Restart if there is a problem starting up
