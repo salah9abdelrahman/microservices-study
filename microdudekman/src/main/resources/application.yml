@@ -1,26 +1,8 @@
-#  sleuth:
-#    sampler:
-#      probability: 1.0
 spring:
-  security:
-    user:
-      name: ENC(BMbogUP5kc6RgxlxT0VEKw==)
-      password: ENC(cReFZN0oof73FRdQbqcH8w==)
   application:
     name: service-micro-dude-kman
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 
 server:
   port: 8200
 
-#eureka.client.serviceUrl.defaultZone=
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    service-url:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
+

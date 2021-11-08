@@ -2,7 +2,7 @@ eureka:
   instance:
     hostname: localhost
   client:
-      # tells the Eureka service that as it starts, it doesn’t need to cache its registry information locally.
+    # tells the Eureka service that as it starts, it doesn’t need to cache its registry information locally.
     fetch-registry: false
     register-with-eureka: false
 

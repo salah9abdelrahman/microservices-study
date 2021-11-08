@@ -7,38 +7,7 @@
 spring:
   application:
     name: service-another-micro-dude
-  security:
-    user:
-      name: ENC(BMbogUP5kc6RgxlxT0VEKw==)
-      password: ENC(cReFZN0oof73FRdQbqcH8w==)
 
 server:
   port: 8100
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-
-resilience4j:
-  ratelimiter:
-    instances:
-      default:
-        limitForPeriod: 2
-        limitRefreshPeriod: 10s
-
-  retry:
-    instances:
-      alo:
-        maxAttempts: 5
-        waitDuration: 2s
-        enableRandomizedWait: true
-        randomizedWaitFactor: 0.5
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    serviceUrl:
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka
 
