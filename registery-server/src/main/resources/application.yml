@@ -27,8 +27,8 @@ management:
       exposure:
         include: "*"
 
-spring:
-  security:
-    user:
-      name: ENC(TGY5EMOdA+aWJwU7W1zNJw==)
-      password: ENC(EKN4QkZiEoFUG/zt4kuxPA==)
+#spring:
+#  security:
+#    user:
+#      name: ENC(TGY5EMOdA+aWJwU7W1zNJw==)
+#      password: ENC(EKN4QkZiEoFUG/zt4kuxPA==)

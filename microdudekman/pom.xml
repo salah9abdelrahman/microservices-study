@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud-contract.version>3.1.1</spring-cloud-contract.version>
     </properties>
     <dependencies>
         <dependency>
@@ -75,6 +76,12 @@
             <artifactId>jasypt-spring-boot</artifactId>
             <version>2.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+            <version>${spring-cloud-contract.version}</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -98,6 +105,15 @@
                         <name>salah9abdelrahman/ms-${artifactId}:${version}</name>
                     </image>
                     <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>${spring-cloud-contract.version}</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <baseClassForTests>com.salah.microdudekman.BaseClass</baseClassForTests>
                 </configuration>
             </plugin>
         </plugins>

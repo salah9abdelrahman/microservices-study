@@ -87,3 +87,13 @@ services:
     #    depends_on:
     #      - rabbitmq
     restart: always #Restart if there is a problem starting up
+
+  keycloak:
+    image: jboss/keycloak
+    restart: always
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    ports:
+      - "8080:8080"
+

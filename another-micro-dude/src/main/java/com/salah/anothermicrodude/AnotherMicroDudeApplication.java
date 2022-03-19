@@ -22,13 +22,11 @@ public class AnotherMicroDudeApplication {
         SpringApplication.run(AnotherMicroDudeApplication.class, args);
     }
 
-    @SuppressWarnings("unchecked")
-
     @LoadBalanced
     @Bean
     public RestTemplate getRestTemplate() {
         RestTemplate template = new RestTemplate();
-        List interceptors = template.getInterceptors();
+        List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
         interceptors.add(new UserContextInterceptor());
         template.setInterceptors(interceptors);
         return template;
