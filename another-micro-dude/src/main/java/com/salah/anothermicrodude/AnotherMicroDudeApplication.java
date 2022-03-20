@@ -1,6 +1,6 @@
 package com.salah.anothermicrodude;
 
-import com.example.common.UserContextInterceptor;
+//import com.example.common.UserContextInterceptor;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,9 +26,9 @@ public class AnotherMicroDudeApplication {
     @Bean
     public RestTemplate getRestTemplate() {
         RestTemplate template = new RestTemplate();
-        List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
-        interceptors.add(new UserContextInterceptor());
-        template.setInterceptors(interceptors);
+//        List<ClientHttpRequestInterceptor> interceptors = template.getInterceptors();
+//        interceptors.add(new UserContextInterceptor());
+//        template.setInterceptors(interceptors);
         return template;
     }
 
