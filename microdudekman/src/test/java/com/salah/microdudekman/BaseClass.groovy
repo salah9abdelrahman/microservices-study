@@ -1,11 +1,12 @@
 package com.salah.microdudekman;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.junit.jupiter.api.*;
-public class BaseClass {
+import spock.lang.Specification;
 
-    @BeforeAll
-    static void setup(){
+class BaseClass extends Specification {
+    void setup() {
         RestAssuredMockMvc.standaloneSetup(new ProviderController());
+
     }
+
 }
