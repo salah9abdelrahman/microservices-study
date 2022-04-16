@@ -5,7 +5,7 @@ import spock.lang.Specification;
 
 class BaseClass extends Specification {
     void setup() {
-        RestAssuredMockMvc.standaloneSetup(new ProviderController());
+        RestAssuredMockMvc.standaloneSetup(new ProviderController())
 
     }
 
